@@ -35,7 +35,7 @@ app.get('/say/:name', function(req, res) {
 // Example: URL/api/mongo/12345
 app.get('/api/mongo/:item', function(req, res) {
 const client = new MongoClient(uri);
-const searchKey = "{ partID: '" + req.params.item + "' }";
+const searchKey = "{ price: '" + req.params.item + "' }";
 console.log("Looking for: " + searchKey);
 
 async function run() {
@@ -47,7 +47,7 @@ async function run() {
     // const query = { partID: '12345' };
     // But we will use the parameter provided with the route: URL/api/mongo/12345
     
-    const query = { partID: req.params.item };
+    const query = { price: req.params.item };
 
     const part = await parts.findOne(query);
     console.log(part);
